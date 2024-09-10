@@ -69,6 +69,7 @@ body {
 /* Navigation styles */
 .barra-navegacion {
     margin: 1rem 0;
+    border-radius: 0.3em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,6 +79,21 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
+
+    animation: blur linear both;
+    animation-timeline: scroll();
+    animation-range: 0 400px;
+}
+
+@keyframes blur {
+    to {
+        box-shadow:
+            0px 5px 50px -5px rgba(0, 0, 0, 0.1),
+            0px 0px 0 1px rgba(0, 0, 0, 0.1);
+
+        background-color: hsla(0, 0%, 100%, 0.3);
+        backdrop-filter: blur(10px);
+    }
 }
 
 .boton-navegacion {
