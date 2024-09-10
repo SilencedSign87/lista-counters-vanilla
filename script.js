@@ -96,7 +96,9 @@ fetch('data.json')
 
         // Función para mostrar counters y countereas en el modal
         function mostrarCountersYCountereas(hero) {
+            //  Counters
             const columnaCounters = document.getElementById('columna-counters');
+            // Counterea
             const columnaCountereas = document.getElementById('columna-countereas');
 
             columnaCounters.innerHTML = '<div class="texto-cuerpo">Counters</div>';
@@ -110,11 +112,11 @@ fetch('data.json')
             const countersByRol = agruparPorRol(heroes.filter(h => heroCountersIds.includes(h.id)));
             const countereasByRol = agruparPorRol(heroes.filter(h => heroCounteredByIds.includes(h.id)));
 
-            // Mostrar counters por rol
-            for (const rol in countersByRol) {
-                if (countersByRol[rol].length > 0) {
+            // Mostrar counters por rol // countersByRol
+            for (const rol in countereasByRol) {
+                if (countereasByRol[rol].length > 0) {
                     const divRol = crearDivRol(rol, 'alerta-peligro');
-                    countersByRol[rol].forEach(counter => {
+                    countereasByRol[rol].forEach(counter => {
                         const imgCounter = document.createElement('img');
                         imgCounter.classList.add('imagen-pequena');
                         imgCounter.src = counter.img_path;
@@ -125,11 +127,11 @@ fetch('data.json')
                 }
             }
 
-            // Mostrar countereas por rol
-            for (const rol in countereasByRol) {
-                if (countereasByRol[rol].length > 0) {
+            // Mostrar countereas por rol // countereasByRol
+            for (const rol in countersByRol) {
+                if (countersByRol[rol].length > 0) {
                     const divRol = crearDivRol(rol, 'alerta-primario');
-                    countereasByRol[rol].forEach(counterea => {
+                    countersByRol[rol].forEach(counterea => {
                         const imgCounterea = document.createElement('img');
                         imgCounterea.classList.add('imagen-pequena');
                         imgCounterea.src = counterea.img_path;
