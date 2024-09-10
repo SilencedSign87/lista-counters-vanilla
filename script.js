@@ -108,15 +108,15 @@ fetch('data.json')
             const heroCountersIds = hero.counters.map(c => c.id);
             const heroCounteredByIds = hero.countered_by.map(c => c.id);
 
-            // Agrupar counters y countereas por rol
+            // Agrupar counter's (hace counter) y countered (le hace counter) por rol
             const countersByRol = agruparPorRol(heroes.filter(h => heroCountersIds.includes(h.id)));
-            const countereasByRol = agruparPorRol(heroes.filter(h => heroCounteredByIds.includes(h.id)));
+            const counteredByRol = agruparPorRol(heroes.filter(h => heroCounteredByIds.includes(h.id)));
 
-            // Mostrar counters por rol // countersByRol
-            for (const rol in countereasByRol) {
-                if (countereasByRol[rol].length > 0) {
+            // Mostrar countered (le hace counter) por rol
+            for (const rol in counteredByRol) {
+                if (counteredByRol[rol].length > 0) {
                     const divRol = crearDivRol(rol, 'alerta-peligro');
-                    countereasByRol[rol].forEach(counter => {
+                    counteredByRol[rol].forEach(counter => {
                         const imgCounter = document.createElement('img');
                         imgCounter.classList.add('imagen-pequena');
                         imgCounter.src = counter.img_path;
@@ -127,7 +127,7 @@ fetch('data.json')
                 }
             }
 
-            // Mostrar countereas por rol // countereasByRol
+            // Mostrar counter's (hace counter) por rol
             for (const rol in countersByRol) {
                 if (countersByRol[rol].length > 0) {
                     const divRol = crearDivRol(rol, 'alerta-primario');
