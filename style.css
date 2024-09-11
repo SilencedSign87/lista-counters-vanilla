@@ -69,7 +69,6 @@ body {
 /* Navigation styles */
 .barra-navegacion {
     margin: 1rem 0;
-    border-radius: 0.3em;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,6 +78,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
+    background: transparent;
 
     animation: blur linear both;
     animation-timeline: scroll();
@@ -89,8 +89,7 @@ body {
     to {
         box-shadow:
             0px 5px 50px -5px rgba(49, 120, 201, 0.1),
-            0px 0px 0 1px rgba(49, 120, 201, 0.1)
-        ;
+            0px 0px 0 1px rgba(49, 120, 201, 0.1);
         background-color: rgba(49, 120, 201, 0.3);
         backdrop-filter: blur(10px);
     }
@@ -136,7 +135,7 @@ body {
 /* Grid container styles */
 .rejilla-contenedor {
     display: grid;
-    grid-template-columns: repeat(6, minmax(150px, 250px));
+    grid-template-columns: repeat(6, minmax(150px, 225px));
     gap: 1vw;
     margin: 0.5rem;
     max-width: calc(100% - 1rem);
@@ -184,7 +183,6 @@ body {
     text-transform: uppercase;
     gap: 0.5rem;
 }
-
 /* Modal styles */
 .ventana-modal {
     display: none;
@@ -244,9 +242,32 @@ body {
 }
 
 /* Fin de las animaciones */
+.contenido-modal {
+    background-color: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
+    border: 0;
+    height: 100%;
+    width: 100%;
+    max-height: 700px;
+    max-width: 1000px;
+
+    border-radius: 1rem;
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+    /* Habilita Flexbox */
+    flex-direction: column;
+    /* Alinea los elementos verticalmente */
+}
+
 .dialogo-modal {
-    width: 100vw;
-    height: 93vh;
+
+    width: 100%;
+    height: 100%;
 
     border-radius: 0.5rem;
     /* padding: 0.5rem; */
@@ -254,9 +275,6 @@ body {
 
     align-items: center;
     justify-content: center;
-
-    margin: auto;
-
     position: relative;
 }
 
@@ -310,32 +328,6 @@ body {
     padding: 1rem;
     background: hsla(0, 0%, 100%, 0.2);
     border: 0;
-}
-
-.contenido-modal {
-    inset: 0;
-    margin: auto;
-
-    background-color: rgba(255, 255, 255, 0.80);
-    backdrop-filter: blur(0.5rem);
-    -webkit-backdrop-filter: blur(0.5rem);
-    border: 0;
-    width: 100%;
-    max-height: 800px;
-    max-width: 1000px;
-
-    border-radius: 1rem;
-
-    overflow: hidden;
-
-    position: relative;
-
-    display: flex;
-    /* Habilita Flexbox */
-    flex-direction: column;
-    /* Alinea los elementos verticalmente */
-    height: 100%;
-    /* Ocupa toda la altura disponible */
 }
 
 .contenido-counters {
@@ -400,6 +392,7 @@ body {
 }
 
 .imagen-pequena {
+    padding-inline: 1px;
     width: calc(100% / 5 - 4px);
     border-radius: 20%;
 }
@@ -495,6 +488,10 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
+    .contenido-modal {
+        max-height: 100%;
+    }
+
     .imagen-pequena {
         width: calc(100% / 2 - 4p);
     }
@@ -504,7 +501,9 @@ body {
     .rejilla-contenedor {
         grid-template-columns: repeat(2, 1fr);
     }
-
+    .contenido-modal {
+        max-height: 100%;
+    }
     .imagen-pequena {
         width: calc(100% / 2 - 4px);
     }
