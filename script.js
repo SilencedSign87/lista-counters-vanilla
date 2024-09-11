@@ -2,7 +2,7 @@
 fetch('data.json')
     .then(response => response.json())
     .then(data => {
-        const heroes = data;
+        const heroes = data.sort((a,b)=>a.nombre.localeCompare(b.nombre));
         const rejillaHeroes = document.getElementById('rejilla-heroes');
         const botonesFiltro = document.querySelectorAll('.boton-navegacion');
         // Detener el spinner
@@ -207,3 +207,13 @@ function cerrarModal(idModal) {
         modal.style.display = 'none';
     }, 300);
 }
+
+const modalbg = document.getElementById('contadoresHeroe');
+const modalCo = document.getElementById('contenido-modal');
+//detectar click fuera de de la ventana modal
+modalbg.addEventListener('click', (e) => {
+    //   console.log(e.target);
+    if (e.target.id == 'dialogo-modal') {
+        cerrarModal('contadoresHeroe');
+    }
+});
